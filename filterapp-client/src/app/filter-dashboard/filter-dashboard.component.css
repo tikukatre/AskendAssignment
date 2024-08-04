@@ -1,0 +1,52 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.filter-container {
+  width: 80%;
+  max-width: 1200px;
+}
+
+.filter-accordion {
+  margin-top: 20px;
+}
+
+button[mat-raised-button] {
+  margin-bottom: 20px;
+}
+
+mat-expansion-panel {
+  margin-bottom: 10px;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.criterion-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.criterion-row mat-icon {
+  margin-right: 8px;
+}
+
+.criterion-text {
+  display: flex;
+  align-items: center;
+}
+
+.criterion-text strong {
+  margin: 0 4px;
+  color: #ba005c; 
+}
+.new-filter-title {
+  color: #ba005c;
+}
+

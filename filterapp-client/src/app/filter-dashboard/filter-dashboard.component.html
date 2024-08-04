@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <h1 id="custom-filters-dashboard" class="mat-title-large" >Custom Filters Dashboard</h1>
+
+  <div class="filter-container">
+    <!-- Add New Filter Button -->
+    <button mat-raised-button color="primary" (click)="addNewFilter()">
+      Add New Filter
+    </button>
+
+    <!-- Existing Filters From The Database -->
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let filter of filters">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ filter.name }}
+          </mat-panel-title>
+          <mat-panel-description class="delete-btn">
+            <span class="spacer"></span>
+            <button mat-icon-button color="warn" (click)="deleteFilter(filter.id!); $event.stopPropagation()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <!-- Filter Criteria -->
+        <ng-container *ngFor="let criterion of filter.criteriaList">
+          <div [ngSwitch]="criterion.type" class="criterion-row">
+            <ng-container *ngSwitchCase="'NUMBER'">
+              <mat-icon>format_list_numbered</mat-icon>
+              <span class="criterion-text">
+                Amount <strong>{{ getConditionLabel(criterion.type, criterion.condition) }}</strong> {{ criterion.value }}
+              </span>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'STRING'">
+              <mat-icon>text_fields</mat-icon>
+              <span class="criterion-text">
+                Title <strong>{{ getConditionLabel(criterion.type, criterion.condition) }}</strong> {{ criterion.value }}
+              </span>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'DATE'">
+              <mat-icon>calendar_month</mat-icon>
+              <span class="criterion-text">
+                Date <strong>{{ getConditionLabel(criterion.type, criterion.condition) }}</strong> {{ criterion.value | date }}
+              </span>
+            </ng-container>
+          </div>
+        </ng-container>
+      </mat-expansion-panel>
+
+      <!-- New Filter Form -->
+      <mat-expansion-panel #newFilterPanel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="new-filter-title">
+            Create New Filter
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- Filter Form Component -->
+        <app-filter-form [filterForm]="newFilterForm" ></app-filter-form>
+        
+        <mat-action-row>
+          <button mat-button color="warn" (click)="closeFilterCreation()">Cancel</button>
+          <button mat-button color="primary" (click)="saveNewFilter()">Save</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
+</div>

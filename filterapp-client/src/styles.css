@@ -1,0 +1,28 @@
+@import '@angular/material/prebuilt-themes/rose-red.css';
+
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+.resizable-mat-dialog-panel {
+  resize: vertical;
+  overflow: hidden !important;
+  max-width: unset !important;
+  max-height: unset !important;
+  position: absolute !important;
+}
+
+
+.cdk-overlay-pane.mat-mdc-dialog-panel {
+max-width: 100% !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
